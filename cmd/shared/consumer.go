@@ -63,12 +63,12 @@ func ConsumerLoop(couchbaseController *internal.CouchbaseController, consumersCo
 
 		var taskId string
 		var task *internal.Task
-		var cas gocb.Cas
+		var lockedCAS gocb.Cas
 
 		lockedCount := 0
 		for _, taskId = range taskIds {
 			// Lock and get the task, so that only this consumer will process it
-			task, cas, err = couchbaseController.GetAndLockTask(taskId)
+			task, lockedCAS, err = couchbaseController.GetAndLockTask(taskId)
 			if err != nil {
 				lockedCount ++
 				stats.totalFoundAlreadyLockedTasks++
@@ -96,7 +96,7 @@ func ConsumerLoop(couchbaseController *internal.CouchbaseController, consumersCo
 		The task will be currently locked, which means we need to provide the current CAS value,
 		so that the producer is authorized to remove it.
 		  */
-		err = couchbaseController.RemoveTask(taskId, cas)
+		err = couchbaseController.RemoveTask(taskId, lockedCAS)
 		if err != nil {
 			log.Printf("Error removing task %s %v", taskId, err)
 			continue
