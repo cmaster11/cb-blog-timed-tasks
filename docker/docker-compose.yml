@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  cb_timer:
+    # docker run -d --name cb -p 8091-8094:8091-8094 -p 11210-11211:11210-11211 couchbase
+    build: './couchbase'
+    # Uncomment the following two lines to have a permanent storage. Default storage is embedded in docker container.
+    # volumes:
+    #   - "/opt/data/couchbase:/opt/couchbase/var"
+    ports:
+      - "8091-8094:8091-8094"
+      - "11210-11211:11210-11211"
