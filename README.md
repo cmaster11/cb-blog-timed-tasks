@@ -43,8 +43,12 @@ go build cmd\consumer_cluster\consumer_cluster.go ; .\consumer_cluster.exe ; rm 
 Run with bash:
 ```
 go build cmd/producer/producer.go && ./producer && rm producer
-go build cmd/consumer_cluster/consumer_cluster.go && ./consumer_cluster.exe && rm consumer_cluster
+go build cmd/consumer_cluster/consumer_cluster.go && ./consumer_cluster && rm consumer_cluster
 ```
+
+## Statistics
+
+When the consumer cluster execution terminates gracefully, a statistics table will be printed.
 
 ### Low concurrency
 
