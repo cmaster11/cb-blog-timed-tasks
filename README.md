@@ -1,5 +1,7 @@
 # Timed tasks with Go and Couchbase
 
+**NOTE:** This code's discussion and overview can be found in Couchbase Blog's post [Timed tasks using Couchbase and Go](https://blog.couchbase.com/timed-tasks-using-couchbase-go/).
+
 The goal of the project is to demonstrate how to use specific Couchbase features 
 ([pessimistic-locking](https://blog.couchbase.com/optimistic-or-pessimistic-locking-which-one-should-you-pick/), indexing, N1QL)
 to implement a distributed timed tasks system.
